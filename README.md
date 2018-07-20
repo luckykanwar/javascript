@@ -1,3 +1,3 @@
-# Eloquent Javascript
+# Javascript
 
-Codes written while learning Javascript using the book Eloquent Javascript
+Codes written while learning Javascript using the book Eloquent Javascript and other resources
