@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Async Javascript</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id ="first" >
+			<p style="text-align: center" id ="firstpara">This is a paragraph!</p>
+		</div>
+		<button>1. Click me any way you want</button>
+		<button>2. Click me any way you want</button>
+		<button>3. Click me any way you want</button>
+			<!--<script type="text/javascript" src="async.js"></script>-->
+			<!--<script type="text/javascript" src="callback.js"></script>-->
+		<script type="text/javascript" src="promises.js"></script>
+		<script>
+				para = document.getElementById('firstpara');
+				paraChild = document.createElement('p');
+				paraChild.appendChild(document.createTextNode("This is a child paragraph!"));
+				paraChild.setAttribute("id","childNode");
+				para.appendChild(paraChild);
+				para.style.fontFamily = "helvetica";
+				para.style.color = "red";
+				para.style.fontSize = "small";
+				paraChild.style.position = "relative";
+				//console.log(paraChild);
+				//removeChild = document.getElementById("childNode");
+				//parent = removeChild.parentNode;
+				//parent.removeChild(removeChild);
+				console.log(para);
+
+			  let angle = Math.PI / 2;
+			  function animate(time, lastTime) {
+			    if (lastTime != null) {
+			      angle += (time - lastTime) * 0.001;
+			    }
+			    paraChild.style.top = (Math.sin(angle) * 20) + "px";
+			    paraChild.style.left = (Math.cos(angle) * 200) + "px";
+			    requestAnimationFrame(newTime => animate(newTime, time));
+			  }
+			  requestAnimationFrame(animate);
+		</script>
+		<script>
+		  let button = document.querySelector("button");
+		  //console.log(button);
+		  button.addEventListener("mousedown", () => {
+				console.log(event.type);
+
+				if (event.button == 0) {
+		      console.log("Left button");
+		    } else if (event.button == 1) {
+		      console.log("Middle button");
+		    } else if (event.button == 2) {
+		      console.log("Right button");
+		    }
+		  });
+		</script>
+
+		<script>
+			document.addEventListener("click", () => {
+				//console.log(event);
+				if(event.target.nodeName == "BUTTON"){
+					console.log(event.target.innerText);
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>Engine Sounds</title>
+			<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+
+	<body>
+		<div class="keys">
+			<span data-key="65" class="key">Press A for boom!</span>
+		</div>
+		<div class="keys">
+			<span data-key="83" class="key">Press S for clap!</span>
+		</div>
+		<audio data-key="83" src="clap.wav"></audio>
+		<audio data-key="65" src="boom.wav"></audio>
+
+		<script>
+			document.addEventListener("keydown",function(e){
+				//console.log(e.keyCode);
+				var sound = document.querySelector(`audio[data-key = "${e.keyCode}"]`);
+				var key =  document.querySelector(`span[data-key="${e.keyCode}"]`);
+				//console.log(key)
+				if(!sound){
+					return;
+				}
+				sound.currentTime = 0;
+				sound.play();
+				key.classList.add('playing');
+			});
+
+			function removeTransition(e){
+				if(e.propertyName == 'transform')
+					this.classList.remove('playing');
+			}
+
+			const keys = document.querySelectorAll('.key')
+			//console.log(keys);
+			keys.forEach(key => key.addEventListener("transitionend",removeTransition));
+
+		</script>
+	</body>
+</html>
