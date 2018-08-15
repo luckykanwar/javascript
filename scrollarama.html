@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>scrollorama</title>
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery.scrollorama.js"></script>
+	
+	<style>
+		.scrollblock {
+			width: 100%;
+			height: 600px;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="scrollblock" id="intro1">
+	  <h1 id="title1">Block 1</h1>
+	</div>
+
+	<div class="scrollblock" id="intro2">
+	  <h1 id="title2">Block 2</h1>
+	</div>
+
+	<div class="scrollblock" id="intro3">
+	  <h1 id="title3">Block 3</h1>
+	</div>
+	
+	<script>
+		$(document).ready(function() {		
+			var scrollorama = $.scrollorama({ blocks:'.scrollblock' });
+			
+			scrollorama.animate('#title1',{ duration: 600, property:'zoom', end: 20 });
+			scrollorama.animate('#title2',{ duration: 600, property:'rotate', start:90,end:360 });
+			scrollorama.animate('#title3',{ duration: 600, property:'left', start:-800,end: 400 });
+			//scrollorama.animate('#title3',{duration: 300, property:’height’, start: ‘100’,end: ‘500’});
+		});
+	</script>
+	
+</body>
+</html>
