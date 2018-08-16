@@ -18,10 +18,29 @@
     <input id="base" type="color" name="base" value="#ffc600">
   </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  <img class = "blurOut" src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root{
+      --spacing : 10px;
+      --base : yellow;
+      --blur : 10px;
+    }
 
+    img:hover{
+      filter: blur(0px);
+      transition: 1s;
+    }
+
+    img{
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl{
+      color: var(--base);
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -45,6 +64,20 @@
   </style>
 
   <script>
+
+    function update(){
+      var suffix = this.dataset.sizing || '';
+      //console.log(suffix);
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    };
+
+    var inputs = document.querySelectorAll("input");
+
+    inputs.forEach(input => {
+      input.addEventListener("change", update);
+      input.addEventListener("mousemove", update);
+    });
+
   </script>
 
 </body>
